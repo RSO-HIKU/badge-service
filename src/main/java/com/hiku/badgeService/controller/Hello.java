@@ -1,4 +1,4 @@
-package com.hiku.activityService.controller;
+package com.hiku.badgeService.controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,6 +11,6 @@ public class Hello {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String sayHello() {
-        return "Hello, Activity Service!";
+        return "Hello, Badge Service!";
     }
 }
