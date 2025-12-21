@@ -1,0 +1,37 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: badge-service
+build:
+  local:
+    push: false
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: badge-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: badge-service
+        chartPath: helm
+        namespace: dev
+        createNamespace: true
+        valuesFiles:
+          - helm/values-dev.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_badge_service}}"
+          image.tag: "{{.IMAGE_TAG_badge_service}}"
+        wait: true
+portForward:
+  - resourceType: service
+    resourceName: badge-service-nodeport
+    namespace: dev
+    port: 8087
+    localPort: 8087
+profiles:
+  - name: minikube
+    activation:
+      - kubeContext: minikube
