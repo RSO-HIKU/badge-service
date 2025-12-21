@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: badge-service
+  tag: dev-latest
+  pullPolicy: Never
+
+service:
+  clusterIP:
+    port: 8087
+
+  nodePort:
+    port: 8087
+    nodePort: 30087
