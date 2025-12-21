@@ -1,0 +1,14 @@
+kumuluzee:
+  name: activity-service
+  version: 0.1.0
+  env:
+    name: dev
+  server:
+    http:
+      port: 8085
+      address: 0.0.0.0
+  datasources:
+    default:
+      connectionUrl: jdbc:postgresql://postgres:5432/hikudb
+      user: hikuuser
+      password: hikupassword
