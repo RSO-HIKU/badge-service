@@ -12,6 +12,10 @@ build:
       context: .
       docker:
         dockerfile: Dockerfile
+    - image: badge-service-migrator
+      context: .
+      docker:
+        dockerfile: Dockerfile.migrator
 deploy:
   helm:
     releases:
@@ -24,6 +28,8 @@ deploy:
         setValueTemplates:
           image.repository: "{{.IMAGE_REPO_badge_service}}"
           image.tag: "{{.IMAGE_TAG_badge_service}}"
+          flyway.image.repository: "{{.IMAGE_REPO_badge_service_migrator}}"
+          flyway.image.tag: "{{.IMAGE_TAG_badge_service_migrator}}"
         wait: true
 portForward:
   - resourceType: service
