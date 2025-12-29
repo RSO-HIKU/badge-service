@@ -12,3 +12,8 @@ service:
   nodePort:
     port: 8087
     nodePort: 30087
+
+flyway:
+  image:
+    repository: badge-service-migrator
+    tag: "dev"
