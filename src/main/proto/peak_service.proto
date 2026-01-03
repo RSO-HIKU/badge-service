@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.hiku.grpc.peak";
+option java_outer_classname = "PeakServiceProto";
+
+package peak;
+
+service PeakService {
+  rpc GetPeakById(PeakRequest) returns (PeakResponse);
+}
+
+message PeakRequest {
+  int32 peak_id = 1;
+}
+
+message PeakResponse {
+  int32 id = 1;
+  string name = 2;
+  string territory = 3;
+  double elevation_m = 4;
+  bool found = 5;
+}

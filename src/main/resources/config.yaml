@@ -1,5 +1,5 @@
 kumuluzee:
-  name: activity-service
+  name: badge-service
   version: 0.1.0
   env:
     name: dev
