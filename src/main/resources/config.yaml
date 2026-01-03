@@ -9,6 +9,9 @@ kumuluzee:
       address: 0.0.0.0
   datasources:
     default:
-      connectionUrl: jdbc:postgresql://postgres:5432/hikudb
-      user: hikuuser
-      password: hikupassword
+      connectionUrl: ${KUMULUZEE_DATASOURCES_DEFAULT_CONNECTIONURL:jdbc:postgresql://localhost:5432/hikudb}
+      user: ${KUMULUZEE_DATASOURCES_DEFAULT_USERNAME:hikuuser}
+      password: ${KUMULUZEE_DATASOURCES_DEFAULT_PASSWORD:hikupassword}
+  jwt-auth:
+    issuer: ${KUMULUZEE_JWT_AUTH_ISSUER}
+    jwks-uri: ${KUMULUZEE_JWT_AUTH_JWKS_URI}
