@@ -1,5 +1,7 @@
 replicaCount: 1
 
+environment: dev
+
 image:
   repository: badge-service
   tag: dev-latest
@@ -18,6 +20,7 @@ azure:
 service:
   clusterIP:
     port: 8087
+    address: "0.0.0.0"
 
   nodePort:
     enabled: true

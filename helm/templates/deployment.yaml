@@ -57,6 +57,10 @@ spec:
           env:
             - name: KUMULUZEE_ENV_NAME
               value: {{ .Values.environment | default "dev" | quote }}
+            - name: KUMULUZEE_SERVER_HTTP_PORT
+              value: "{{ .Values.service.clusterIP.port }}"
+            - name: KUMULUZEE_SERVER_HTTP_ADDRESS
+              value: "{{ .Values.service.clusterIP.address }}"
             {{- if .Values.database.enabled }}
             # Dev: use Kubernetes secret with KumuluzEE env var names
             - name: KUMULUZEE_DATASOURCES_DEFAULT_CONNECTIONURL
