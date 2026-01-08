@@ -1,5 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS badge_service;
-
 CREATE TABLE badge_service.logbook (
     id SERIAL PRIMARY KEY,        
     user_id INT NOT NULL,        
