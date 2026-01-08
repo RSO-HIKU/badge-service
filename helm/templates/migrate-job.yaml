@@ -6,8 +6,14 @@ metadata:
   labels:
     {{- include "badge-service.labels" . | nindent 4 }}
   annotations:
+    {{- if .Values.gitops.enabled }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded,HookFailed
+    {{- else }}
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    {{- end }}
 spec:
   backoffLimit: 3
   template:
@@ -37,12 +43,12 @@ spec:
           command: ["sh", "-c"]
           args:
             - |
-              set -euo pipefail
+              set -eu
               # Read secrets from CSI mounted files
               export FLYWAY_USER=$(cat /mnt/secrets-store/badge-db-user)
               export FLYWAY_PASSWORD=$(cat /mnt/secrets-store/badge-db-password)
               export PGHOST=$(cat /mnt/secrets-store/pg-host)
-              export FLYWAY_URL="jdbc:postgresql://${PGHOST}:{{ .Values.azure.port }}/{{ .Values.azure.database }}?sslmode={{ .Values.azure.sslmode }}"
+              export FLYWAY_URL="jdbc:postgresql://${PGHOST}:{{ .Values.azure.port }}/{{ .Values.azure.database }}?sslmode={{ .Values.azure.sslmode }}&currentSchema={{ .Values.database.schema }}"
               
               exec flyway migrate
           {{- else }}
@@ -54,7 +60,7 @@ spec:
             - name: FLYWAY_DEFAULT_SCHEMA
               value: {{ .Values.database.schema | quote }}
             - name: FLYWAY_CREATE_SCHEMAS
-              value: "true"
+              value: {{ ternary "false" "true" .Values.gitops.enabled | quote }}
             {{- if .Values.database.enabled }}
             # Dev: use Kubernetes secret
             - name: FLYWAY_URL

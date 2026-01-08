@@ -17,6 +17,9 @@ database:
 azure:
   enabled: false
 
+gitops:
+  enabled: false
+
 service:
   clusterIP:
     port: 8087

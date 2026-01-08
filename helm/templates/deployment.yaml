@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "badge-service.labels" . | nindent 4 }}
+  {{- if .Values.gitops.enabled }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -39,7 +43,7 @@ spec:
             - sh
             - -c
             - |
-              set -euo pipefail
+              set -eu
 
               # Read secrets from CSI mounted files
               export KUMULUZEE_DATASOURCES_DEFAULT_USERNAME=$(cat /mnt/secrets-store/badge-db-user)
