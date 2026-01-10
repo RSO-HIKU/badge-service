@@ -33,7 +33,7 @@ public class HealthController {
     private final EntityManagerFactory emf;
 
     public HealthController() {
-        this.emf = Persistence.createEntityManagerFactory("badgePU");
+        this.emf = Persistence.createEntityManagerFactory("hikuPU");
     }
 
     private EntityManager getEntityManager() {
