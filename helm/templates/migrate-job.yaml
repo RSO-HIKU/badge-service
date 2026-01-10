@@ -45,8 +45,8 @@ spec:
             - |
               set -eu
               # Read secrets from CSI mounted files
-              export FLYWAY_USER=$(cat /mnt/secrets-store/badge-db-user)
-              export FLYWAY_PASSWORD=$(cat /mnt/secrets-store/badge-db-password)
+              export FLYWAY_USER=$(cat /mnt/secrets-store/badge-db-migrator-user)
+              export FLYWAY_PASSWORD=$(cat /mnt/secrets-store/badge-db-migrator-password)
               export PGHOST=$(cat /mnt/secrets-store/pg-host)
               export FLYWAY_URL="jdbc:postgresql://${PGHOST}:{{ .Values.azure.port }}/{{ .Values.azure.database }}?sslmode={{ .Values.azure.sslmode }}&currentSchema={{ .Values.database.schema }},public"
               
