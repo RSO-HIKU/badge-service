@@ -15,12 +15,12 @@ public class LogbookService {
     @Inject
     LogbookDao logbookDao;
 
-    public List<LogbookEntry> listForUser(Integer userId) {
+    public List<LogbookEntry> listForUser(String userId) {
         return logbookDao.findByUser(userId);
     }
 
     @Transactional
-    public LogbookEntry addEntry(Integer userId, Integer peakId, Instant addedAt, String notes) {
+    public LogbookEntry addEntry(String userId, Integer peakId, Instant addedAt, String notes) {
         LogbookEntry entry = new LogbookEntry();
         entry.setUserId(userId);
         entry.setPeakId(peakId);

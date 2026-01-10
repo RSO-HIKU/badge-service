@@ -30,7 +30,7 @@ public class LogbookController {
     PeakServiceClient peakServiceClient;
 
     public static class LogbookRequest {
-        public Integer userId;
+        public String userId;
         public Integer peakId;
         public String addedAt;
         public String notes;
@@ -38,7 +38,7 @@ public class LogbookController {
 
     public static class LogbookEntryDto {
         public Long id;
-        public Integer userId;
+        public String userId;
         public Integer peakId;
         public String peakName;
         public String territory;
@@ -48,8 +48,8 @@ public class LogbookController {
     }
 
     @GET
-    public Response list(@QueryParam("userId") Integer userId) {
-        if (userId == null) {
+    public Response list(@QueryParam("userId") String userId) {
+        if (userId == null || userId.isBlank()) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\":\"userId is required\"}")
                     .build();   
@@ -63,7 +63,7 @@ public class LogbookController {
 
     @POST
     public Response add(LogbookRequest req) {
-        if (req == null || req.userId == null) {
+        if (req == null || req.userId == null || req.userId.isBlank()) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\":\"userId is required\"}")
                     .build();
