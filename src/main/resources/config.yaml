@@ -13,6 +13,7 @@ kumuluzee:
       username: ${KUMULUZEE_DATASOURCES_DEFAULT_USERNAME:hikuuser}
       password: ${KUMULUZEE_DATASOURCES_DEFAULT_PASSWORD:hikupassword}
       pool:
+        min-size: 1
         max-size: ${KUMULUZEE_DATASOURCES_DEFAULT_POOL_MAX_SIZE:3}
   jwt-auth:
     issuer: ${KUMULUZEE_JWT_AUTH_ISSUER}
