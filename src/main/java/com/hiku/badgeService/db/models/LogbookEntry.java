@@ -12,7 +12,7 @@ public class LogbookEntry {
     private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    private String userId;
 
     @Column(name = "peak_id", nullable = false)
     private Integer peakId;
@@ -31,11 +31,11 @@ public class LogbookEntry {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

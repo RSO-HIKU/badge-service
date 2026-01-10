@@ -14,7 +14,7 @@ public class LogbookDao {
     @Inject
     private EntityManager em;
 
-    public List<LogbookEntry> findByUser(Integer userId) {
+    public List<LogbookEntry> findByUser(String userId) {
         TypedQuery<LogbookEntry> q = em.createQuery(
                 "SELECT l FROM LogbookEntry l WHERE l.userId = :userId ORDER BY l.addedAt DESC",
                 LogbookEntry.class);

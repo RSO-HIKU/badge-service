@@ -10,7 +10,6 @@
         <non-jta-data-source>jdbc/HikuDS</non-jta-data-source>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
             <property name="hibernate.default_schema" value="badge_service"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
