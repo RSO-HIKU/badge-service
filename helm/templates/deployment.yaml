@@ -50,8 +50,7 @@ spec:
               export KUMULUZEE_DATASOURCES_DEFAULT_PASSWORD=$(cat /mnt/secrets-store/badge-db-password)
               export DB_HOST=$(cat /mnt/secrets-store/pg-host)
               export KUMULUZEE_DATASOURCES_DEFAULT_CONNECTIONURL="jdbc:postgresql://${DB_HOST}:{{ .Values.azure.port }}/{{ .Values.azure.database }}?sslmode={{ .Values.azure.sslmode }}&currentSchema={{ .Values.database.schema }},public"
-              export KUMULUZEE_DATASOURCES_0_POOL_MAX_SIZE="{{ .Values.dbPool.poolMaxSize }}"
-              export KUMULUZEE_DATASOURCES_0_POOL_MIN_SIZE="{{ .Values.dbPool.poolMinSize }}"
+              export KUMULUZEE_DATASOURCES_0_POOL_MAXSIZE="{{ .Values.dbPool.poolMaxSize }}"
               
               # JWT Auth (Keycloak / OIDC)
               export KUMULUZEE_JWT_AUTH_ISSUER="{{ .Values.jwtAuth.issuer }}"
