@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "07d82acc-aea5-480b-a314-bcddd2ada9aa",
+		"name": "HIKU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40015610",
+		"_collection_link": "https://hiku99.postman.co/workspace/HIKU~a6a05134-9dee-4d54-81a0-4bc7685fcc34/collection/40015610-07d82acc-aea5-480b-a314-bcddd2ada9aa?action=share&source=collection_link&creator=40015610"
+	},
+	"item": [
+		{
+			"name": "Badge Service",
+			"item": [
+				{
+					"name": "logbook by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/badges/logbook?userId={{followUserId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"badges",
+								"logbook"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{followUserId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "logbook by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/badges/logbook?userId=1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"badges",
+										"logbook"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "origin, content-type, accept, authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jan 2026 15:58:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(10.0.9)"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "KumuluzEE/4.1.0"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "[]"
+						},
+						{
+							"name": "logbook by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/badges/logbook?userId={{followUserId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"badges",
+										"logbook"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "{{followUserId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "origin, content-type, accept, authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "130"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jan 2026 15:59:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(10.0.9)"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "KumuluzEE/4.1.0"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"addedAt\": \"11/01/2026 12:54\",\n        \"id\": 1,\n        \"notes\": \"Lubnik\",\n        \"peakId\": 1,\n        \"peakName\": \"1\",\n        \"userId\": \"8e93bfd1-3a0b-479a-a041-071b92be00ec\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "insert new log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"1\",\r\n    \"peakId\":123,\r\n    \"notes\":\"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/badges/logbook",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"badges",
+								"logbook"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "insert new log",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"1\",\r\n    \"peakId\":123,\r\n    \"notes\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/badges/logbook",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"badges",
+										"logbook"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "origin, content-type, accept, authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jan 2026 16:02:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(10.0.9)"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "KumuluzEE/4.1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"addedAt\": \"11/01/2026 16:02\",\n    \"id\": 2,\n    \"notes\": \"test\",\n    \"peakId\": 123,\n    \"peakName\": \"123\",\n    \"userId\": \"1\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
