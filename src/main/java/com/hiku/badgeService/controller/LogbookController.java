@@ -4,6 +4,7 @@ import com.hiku.badgeService.db.models.LogbookEntry;
 import com.hiku.badgeService.service.LogbookService;
 import com.hiku.badgeService.grpc.PeakServiceClient;
 import com.hiku.grpc.peak.PeakResponse;
+import javax.annotation.security.RolesAllowed;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Path("/logbook")
+@RolesAllowed("user")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LogbookController {

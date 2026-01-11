@@ -86,6 +86,23 @@ spec:
             - name: KUMULUZEE_JWT_AUTH_JWKS_URI
               value: {{ .Values.jwtAuth.jwksUri | quote }}
             {{- end }}
+          # Kubernetes Health Probes
+          livenessProbe:
+            httpGet:
+              path: /api/badges/health/live
+              port: {{ .Values.service.clusterIP.port }}
+            initialDelaySeconds: {{ .Values.health.liveness.initialDelaySeconds | default 30 }}
+            periodSeconds: {{ .Values.health.liveness.periodSeconds | default 10 }}
+            timeoutSeconds: {{ .Values.health.liveness.timeoutSeconds | default 5 }}
+            failureThreshold: {{ .Values.health.liveness.failureThreshold | default 3 }}
+          readinessProbe:
+            httpGet:
+              path: /api/badges/health/ready
+              port: {{ .Values.service.clusterIP.port }}
+            initialDelaySeconds: {{ .Values.health.readiness.initialDelaySeconds | default 20 }}
+            periodSeconds: {{ .Values.health.readiness.periodSeconds | default 5 }}
+            timeoutSeconds: {{ .Values.health.readiness.timeoutSeconds | default 3 }}
+            failureThreshold: {{ .Values.health.readiness.failureThreshold | default 3 }}
           {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}

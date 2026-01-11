@@ -14,7 +14,7 @@ public class EntityManagerProducer {
     private static EntityManagerFactory emf;
 
     static {
-        emf = Persistence.createEntityManagerFactory("badgePU");
+        emf = Persistence.createEntityManagerFactory("hikuPU");
     }
 
     @Produces
